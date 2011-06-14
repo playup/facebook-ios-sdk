@@ -16,3 +16,4 @@ test/UnitTest/build/
 *#
 .arcconfig
 *.xcuserdatad
+.DS_Store
