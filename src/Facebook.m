@@ -43,6 +43,7 @@ static NSString* kSDKVersion = @"2";
 
 @implementation Facebook
 
+@synthesize singleSignOnEnabled;
 @synthesize accessToken = _accessToken,
          expirationDate = _expirationDate,
         sessionDelegate = _sessionDelegate,
@@ -157,7 +158,7 @@ static NSString* kSDKVersion = @"2";
   // her credentials in order to authorize the application.
   BOOL didOpenOtherApp = NO;
   UIDevice *device = [UIDevice currentDevice];
-  if ([device respondsToSelector:@selector(isMultitaskingSupported)] && [device isMultitaskingSupported]) {
+  if ([self isSingleSignOnEnabled] && [device respondsToSelector:@selector(isMultitaskingSupported)] && [device isMultitaskingSupported]) {
     if (tryFBAppAuth) {
       NSString *scheme = kFBAppAuthURLScheme;
       if (_localAppId) {
@@ -272,7 +273,7 @@ static NSString* kSDKVersion = @"2";
 
   _sessionDelegate = delegate;
 
-  [self authorizeWithFBAppAuth:YES safariAuth:YES];
+  [self authorizeWithFBAppAuth:YES safariAuth:NO];
 }
 
 /**

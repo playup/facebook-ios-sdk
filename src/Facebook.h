@@ -37,6 +37,7 @@
   NSArray* _permissions;
 }
 
+@property (nonatomic, assign, getter=isSingleSignOnEnabled) BOOL singleSignOnEnabled;
 @property(nonatomic, copy) NSString* accessToken;
 @property(nonatomic, copy) NSDate* expirationDate;
 @property(nonatomic, assign) id<FBSessionDelegate> sessionDelegate;
